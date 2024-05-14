@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 '''
-This script provides statistics related to Nginx logs.
+This is the module for Task 12, which focuses on log statistics.
 '''
 from pymongo import MongoClient
 
+
 def print_nginx_request_logs(nginx_collection):
     '''
-    This function prints statistics about Nginx logs.
+    This function displays statistics related to Nginx request logs.
     '''
     print('{} logs'.format(nginx_collection.count_documents({})))
     print('Methods:')
@@ -19,12 +20,14 @@ def print_nginx_request_logs(nginx_collection):
     ))
     print('{} status check'.format(status_checks_count))
 
+
 def run():
     '''
-    This function connects to the MongoDB, retrieves the Nginx logs and prints the statistics.
+    This function provides statistics about Nginx logs stored in MongoDB.
     '''
     client = MongoClient('mongodb://127.0.0.1:27017')
     print_nginx_request_logs(client.logs.nginx)
+
 
 if __name__ == '__main__':
     run()
